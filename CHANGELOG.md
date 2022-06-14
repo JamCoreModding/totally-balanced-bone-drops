@@ -2,8 +2,6 @@
 
 ### Features
 
-### Fixes
+- Initial release.
 
 Closed issues: None.
-
-[Full Changelog](https://github.com/JamCoreModding/TotallyBalancedBoneDrops/compare/...)
