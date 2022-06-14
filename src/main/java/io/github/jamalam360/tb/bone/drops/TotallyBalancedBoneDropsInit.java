@@ -24,13 +24,26 @@
 
 package io.github.jamalam360.tb.bone.drops;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import io.github.jamalam360.jamlib.config.JamLibConfig;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.resource.JsonDataLoader;
+import net.minecraft.resource.ResourceManager;
+import net.minecraft.resource.ResourceType;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.profiler.Profiler;
 import net.minecraft.util.random.RandomGenerator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class TotallyBalancedBoneDropsInit implements ModInitializer {
     public static final String MOD_NAME = "Totally Balanced Bone Drops";
@@ -40,6 +53,7 @@ public class TotallyBalancedBoneDropsInit implements ModInitializer {
     public void onInitialize() {
         LOGGER.info("Initialising " + MOD_NAME + "...");
         JamLibConfig.init("tb-bone-drops", Config.class);
+        ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new DataLoader());
     }
 
     public static Logger getLogger(String name) {
@@ -71,6 +85,30 @@ public class TotallyBalancedBoneDropsInit implements ModInitializer {
             }
 
             return new ItemStack(Items.BONE, count);
+        }
+    }
+
+    public static class DataLoader extends JsonDataLoader implements IdentifiableResourceReloadListener {
+        public static List<Identifier> BLACKLIST = new ArrayList<>();
+
+        public DataLoader() {
+            super(new Gson(), "tb_bone_drops");
+        }
+
+        @Override
+        public void apply(Map<Identifier, JsonElement> prepared, ResourceManager manager, Profiler profiler) {
+            BLACKLIST.clear();
+
+            prepared.forEach((id, element) -> {
+                for (var entry : element.getAsJsonObject().get("blacklist").getAsJsonArray()) {
+                    BLACKLIST.add(new Identifier(entry.getAsString()));
+                }
+            });
+        }
+
+        @Override
+        public Identifier getFabricId() {
+            return new Identifier("tb-bone-drops", "tb_bone_drops_data");
         }
     }
 }

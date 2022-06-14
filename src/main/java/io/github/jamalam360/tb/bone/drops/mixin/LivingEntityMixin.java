@@ -25,6 +25,7 @@
 package io.github.jamalam360.tb.bone.drops.mixin;
 
 import io.github.jamalam360.tb.bone.drops.Config;
+import io.github.jamalam360.tb.bone.drops.TotallyBalancedBoneDropsInit;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -33,6 +34,7 @@ import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.*;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -56,25 +58,8 @@ public abstract class LivingEntityMixin extends Entity {
     public void tbbonedrops$injectBoneDrops(DamageSource source, boolean causedByPlayer, CallbackInfo ci) {
         LivingEntity castedThis = (LivingEntity) (Object) this;
 
-        //TODO(Jamalam360): PLEASE MAKE THIS A TAG
-
         if (
-                castedThis instanceof AbstractSkeletonEntity ||
-                        castedThis instanceof SlimeEntity ||
-                        castedThis instanceof EnderDragonEntity ||
-                        castedThis instanceof WitherEntity ||
-                        castedThis instanceof BlazeEntity ||
-                        castedThis instanceof CreeperEntity ||
-                        castedThis instanceof SpiderEntity ||
-                        castedThis instanceof GuardianEntity ||
-                        castedThis instanceof EndermiteEntity ||
-                        castedThis instanceof SilverfishEntity ||
-                        castedThis instanceof GhastEntity ||
-                        castedThis instanceof AllayEntity ||
-                        castedThis instanceof BeeEntity ||
-                        castedThis instanceof GolemEntity ||
-                        castedThis instanceof FishEntity
-
+                TotallyBalancedBoneDropsInit.DataLoader.BLACKLIST.contains(Registry.ENTITY_TYPE.getId(this.getType()))
         ) {
             return;
         }
