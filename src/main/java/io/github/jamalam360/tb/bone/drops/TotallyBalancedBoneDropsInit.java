@@ -22,23 +22,55 @@
  * THE SOFTWARE.
  */
 
-package io.github.jamalam360.tb-bone-drops;
+package io.github.jamalam360.tb.bone.drops;
 
+import io.github.jamalam360.jamlib.config.JamLibConfig;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.util.random.RandomGenerator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class TotallyBalancedBoneDropsInit implements ModInitializer {
-    public static final String MOD_ID = "tb-bone-drops";
     public static final String MOD_NAME = "Totally Balanced Bone Drops";
     private static final Logger LOGGER = getLogger("Initializer");
 
     @Override
     public void onInitialize() {
         LOGGER.info("Initialising " + MOD_NAME + "...");
+        JamLibConfig.init("tb-bone-drops", Config.class);
     }
 
     public static Logger getLogger(String name) {
         return LogManager.getLogger(MOD_NAME + "/" + name);
+    }
+
+    public enum Chance {
+        VERY_RARE(0.05D, 1),
+        RARE(0.1D, 2),
+        COMMON(0.2D, 2),
+        VERY_COMMON(0.4D, 2),
+        ABUNDANT(0.7D, 3);
+
+        private final double chance;
+        private final int rolls;
+
+        Chance(double chance, int rolls) {
+            this.chance = chance;
+            this.rolls = rolls;
+        }
+
+        public ItemStack getDrop(RandomGenerator random) {
+            int count = 0;
+
+            for (int i = 0; i < this.rolls; i++) {
+                if (random.nextDouble() < this.chance) {
+                    count++;
+                }
+            }
+
+            return new ItemStack(Items.BONE, count);
+        }
     }
 }

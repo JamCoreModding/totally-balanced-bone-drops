@@ -16,7 +16,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      ".james.Desktop.Development.Minecraft.TotallyBalancedBoneDrops.src.main.java."
+      "io.github.jamalam360.tb.bone.drops.TotallyBalancedBoneDropsInit"
+    ],
+    "modmenu": [
+      "io.github.jamalam360.tb.bone.drops.ModMenuScreen"
     ]
   },
   "mixins": [

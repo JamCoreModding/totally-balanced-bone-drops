@@ -2,7 +2,9 @@
   "required": true,
   "package": "io.github.jamalam360.tb.bone.drops.mixin",
   "compatibilityLevel": "JAVA_16",
-  "mixins": [],
+  "mixins": [
+    "LivingEntityMixin"
+  ],
   "client": [],
   "server": [],
   "injectors": {

@@ -1,0 +1,10 @@
+{
+  "tb-bone-drops.jamlibconfig.title": "Totally Balanced Bone Drops Config",
+  "tb-bone-drops.jamlibconfig.chance": "Drop Chance",
+  "tb-bone-drops.jamlibconfig.chance.tooltip": "The chance of dropping a bone.",
+  "tb-bone-drops.jamlibconfig.enum.Chance.VERY_RARE": "Very Rare",
+  "tb-bone-drops.jamlibconfig.enum.Chance.RARE": "Rare",
+  "tb-bone-drops.jamlibconfig.enum.Chance.COMMON": "Common",
+  "tb-bone-drops.jamlibconfig.enum.Chance.VERY_COMMON": "Very Common",
+  "tb-bone-drops.jamlibconfig.enum.Chance.ABUNDANT": "Abundant"
+}
