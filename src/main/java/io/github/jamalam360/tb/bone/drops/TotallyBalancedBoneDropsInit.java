@@ -22,15 +22,15 @@
  * THE SOFTWARE.
  */
 
-package io.github.jamalam360.templatemod;
+package io.github.jamalam360.tb-bone-drops;
 
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class TemplateModInit implements ModInitializer {
-    public static final String MOD_ID = "templatemod";
-    public static final String MOD_NAME = "Template Mod";
+public class TotallyBalancedBoneDropsInit implements ModInitializer {
+    public static final String MOD_ID = "tb-bone-drops";
+    public static final String MOD_NAME = "Totally Balanced Bone Drops";
     private static final Logger LOGGER = getLogger("Initializer");
 
     @Override

@@ -1,33 +1,33 @@
 {
   "schemaVersion": 1,
-  "id": "templatemod",
+  "id": "tb-bone-drops",
   "version": "${version}",
-  "name": "Template Mod",
-  "description": "A Fabric mod template",
+  "name": "Totally Balanced Bone Drops",
+  "description": "Most entities have a skeleton, so why don't they drop bones?",
   "authors": [
     "Jamalam"
   ],
   "contact": {
-    "sources": "https://github.com/JamCoreModding/FabricTemplateMod",
-    "issues": "https://github.com/JamCoreModding/FabricTemplateMod/issues"
+    "sources": "https://github.com/JamCoreModding/TotallyBalancedBoneDrops",
+    "issues": "https://github.com/JamCoreModding/TotallyBalancedBoneDrops/issues"
   },
   "license": "MIT",
-  "icon": "assets/templatemod/icon.png",
+  "icon": "assets/tb-bone-drops/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.jamalam360.templatemod.TemplateModInit"
+      ".james.Desktop.Development.Minecraft.TotallyBalancedBoneDrops.src.main.java."
     ]
   },
   "mixins": [
-    "templatemod.mixins.json"
+    "tb-bone-drops.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.12.5",
     "fabric": "*"
   },
   "custom": {
-    "notify_gradle_properties_url": "https://raw.githubusercontent.com/JamCoreModding/FabricTemplateMod/main/gradle.properties",
+    "notify_gradle_properties_url": "https://raw.githubusercontent.com/JamCoreModding/TotallyBalancedBoneDrops/main/gradle.properties",
     "notify_gradle_properties_key": "mod_version"
   }
 }
