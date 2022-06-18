@@ -37,21 +37,22 @@ import net.minecraft.resource.ResourceManager;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.profiler.Profiler;
-import net.minecraft.util.random.RandomGenerator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class TotallyBalancedBoneDropsInit implements ModInitializer {
     public static final String MOD_NAME = "Totally Balanced Bone Drops";
     private static final Logger LOGGER = getLogger("Initializer");
+    private static final Random RANDOM = new Random();
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Initialising " + MOD_NAME + "...");
+        LOGGER.info("Initializing " + MOD_NAME + "...");
         JamLibConfig.init("tb-bone-drops", Config.class);
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new DataLoader());
     }
@@ -75,11 +76,11 @@ public class TotallyBalancedBoneDropsInit implements ModInitializer {
             this.rolls = rolls;
         }
 
-        public ItemStack getDrop(RandomGenerator random) {
+        public ItemStack getDrop() {
             int count = 0;
 
             for (int i = 0; i < this.rolls; i++) {
-                if (random.nextDouble() < this.chance) {
+                if (RANDOM.nextDouble() < this.chance) {
                     count++;
                 }
             }

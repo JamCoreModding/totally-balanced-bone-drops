@@ -29,11 +29,7 @@ import io.github.jamalam360.tb.bone.drops.TotallyBalancedBoneDropsInit;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.boss.WitherEntity;
-import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.mob.*;
-import net.minecraft.entity.passive.*;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -56,14 +52,10 @@ public abstract class LivingEntityMixin extends Entity {
             at = @At("TAIL")
     )
     public void tbbonedrops$injectBoneDrops(DamageSource source, boolean causedByPlayer, CallbackInfo ci) {
-        LivingEntity castedThis = (LivingEntity) (Object) this;
-
-        if (
-                TotallyBalancedBoneDropsInit.DataLoader.BLACKLIST.contains(Registry.ENTITY_TYPE.getId(this.getType()))
-        ) {
+        if (TotallyBalancedBoneDropsInit.DataLoader.BLACKLIST.contains(Registry.ENTITY_TYPE.getId(this.getType()))) {
             return;
         }
 
-        this.dropStack(Config.chance.getDrop(this.world.random));
+        this.dropStack(Config.chance.getDrop());
     }
 }
