@@ -1,5 +1,6 @@
 {
-  "blacklist": [
+  "replace": false,
+  "values": [
     "minecraft:allay",
     "minecraft:armor_stand",
     "minecraft:bee",
@@ -8,7 +9,7 @@
     "minecraft:creeper",
     "minecraft:elder_guardian",
     "minecraft:ender_dragon",
-    "minecraft:ender_mite",
+    "minecraft:endermite",
     "minecraft:ghast",
     "minecraft:guardian",
     "minecraft:iron_golem",
@@ -21,7 +22,8 @@
     "minecraft:snow_golem",
     "minecraft:spider",
     "minecraft:tadpole",
-    "minecraf:tropical_fish",
+    "minecraft:tropical_fish",
+    "minecraft:vex",
     "minecraft:wither",
     "minecraft:wither_skeleton"
   ]

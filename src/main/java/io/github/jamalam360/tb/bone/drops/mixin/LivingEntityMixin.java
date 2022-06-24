@@ -30,7 +30,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -52,10 +51,10 @@ public abstract class LivingEntityMixin extends Entity {
             at = @At("TAIL")
     )
     public void tbbonedrops$injectBoneDrops(DamageSource source, boolean causedByPlayer, CallbackInfo ci) {
-        if (TotallyBalancedBoneDropsInit.DataLoader.BLACKLIST.contains(Registry.ENTITY_TYPE.getId(this.getType()))) {
+        if (this.getType().isIn(TotallyBalancedBoneDropsInit.BLACKLIST)) {
             return;
         }
 
-        this.dropStack(Config.chance.getDrop());
+        this.dropStack(Config.chance.getDrop(source.getAttacker()));
     }
 }

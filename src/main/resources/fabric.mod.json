@@ -27,7 +27,8 @@
   ],
   "depends": {
     "fabricloader": ">=0.12.5",
-    "fabric": "*"
+    "fabric": "*",
+    "jamlib": "*"
   },
   "custom": {
     "notify_gradle_properties_url": "https://raw.githubusercontent.com/JamCoreModding/TotallyBalancedBoneDrops/main/gradle.properties",
