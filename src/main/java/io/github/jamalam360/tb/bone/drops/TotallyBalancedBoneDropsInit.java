@@ -32,9 +32,10 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -42,7 +43,7 @@ import java.util.Random;
 
 public class TotallyBalancedBoneDropsInit implements ModInitializer {
     public static final String MOD_NAME = "Totally Balanced Bone Drops";
-    public static final TagKey<EntityType<?>> BLACKLIST = TagKey.of(Registry.ENTITY_TYPE_KEY, new Identifier("tb-bone-drops", "blacklist"));
+    public static final TagKey<EntityType<?>> BLACKLIST = TagKey.of(Registries.ENTITY_TYPE.getKey(), new Identifier("tb-bone-drops", "blacklist"));
     private static final Logger LOGGER = getLogger("Initializer");
     private static final Random RANDOM = new Random();
 
