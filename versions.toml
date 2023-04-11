@@ -1,12 +1,12 @@
 [versions]
-minecraft = "1.19.3"
-quilt-mappings = "1.19.3+build.3"
+minecraft = "1.19.4"
+quilt-mappings = "1.19.4+build.10"
 fabric-loader = "0.14.11"
-fabric-api = "0.69.1+1.19.3"
+fabric-api = "0.76.0+1.19.4"
 
-jamlib = "0.5.2"
+jamlib = "0.6.0+1.19.4"
 
-mod-menu = "5.0.2"
+mod-menu = "6.1.0-rc.4"
 
 lazy-dfu = "0.1.3"
 
